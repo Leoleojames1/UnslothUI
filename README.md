@@ -1,6 +1,6 @@
 
 <p align="center">
-  <img src="slothUI.png" alt="slothui LOGO" width="120"/>
+  <img src="slothUI.png" alt="slothui LOGO" width="250"/>
 </p>
 
 # Unsloth UI
