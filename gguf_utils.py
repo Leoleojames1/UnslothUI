@@ -33,6 +33,29 @@ def export_to_gguf(
         Tuple containing success status and message
     """
     try:
+        # Clear CUDA cache before loading model
+        if torch.cuda.is_available():
+            torch.cuda.empty_cache()
+        
+        # Create device map for CPU offloading
+        device_map = {
+            "model.embed_tokens": "cpu",
+            "lm_head": "cpu",
+            "model.norm": "cpu",
+            "model.layers": "sequential"
+        }
+        
+        # Load model with CPU offloading
+        model, tokenizer = FastLanguageModel.from_pretrained(
+            model_name=model_dir,
+            max_seq_length=2048,
+            dtype=None,
+            load_in_4bit=True,
+            device_map=device_map,
+            llm_int8_enable_fp32_cpu_offload=True,
+            offload_folder="temp_offload"
+        )
+        
         # Create output directory if it doesn't exist
         os.makedirs(output_dir, exist_ok=True)
         
@@ -129,6 +152,11 @@ TEMPLATE """{template}"""
             results.append(f"Created Ollama model '{ollama_name}'")
         except Exception as e:
             results.append(f"Ollama model creation skipped or failed: {str(e)}")
+        
+        # Clean up
+        del model
+        if torch.cuda.is_available():
+            torch.cuda.empty_cache()
         
         return True, "\n".join(results)
     

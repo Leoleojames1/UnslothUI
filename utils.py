@@ -244,38 +244,58 @@ def finetune_model(
         model.save_pretrained(output_dir)
         tokenizer.save_pretrained(output_dir)
         
-        # Step 10: Handle model merging (for uploading to Hub) if requested
-        merged_model_dir = None
+        # Step 10: Handle model merging (if requested)
         if merge_adapter:
-            # Create a temporary directory for the merged model
             merged_model_dir = f"{output_dir}_merged"
             os.makedirs(merged_model_dir, exist_ok=True)
             
-            # Load the adapter model and merge it
             try:
-                # Load the LoRA adapter
+                # Clear CUDA cache before loading model
+                if torch.cuda.is_available():
+                    torch.cuda.empty_cache()
+                
+                # Create custom device map for CPU offloading if needed
+                total_gpu_memory = torch.cuda.get_device_properties(0).total_memory / 1024**3  # Convert to GB
+                device_map = "auto" if total_gpu_memory > 24 else {
+                    "model.embed_tokens": "cpu",
+                    "lm_head": "cpu",
+                    "model.norm": "cpu",
+                    "model.layers": "sequential"  # Load layers sequentially
+                }
+                
+                # Load the LoRA adapter with CPU offloading enabled
                 model = AutoPeftModelForCausalLM.from_pretrained(
                     output_dir,
                     torch_dtype=torch.float16 if not config.is_bfloat16_supported() else torch.bfloat16,
                     low_cpu_mem_usage=True,
-                    device_map="auto"
+                    device_map=device_map,
+                    offload_folder="offload_folder",
+                    offload_state_dict=True
                 )
                 
-                # Merge the LoRA adapter with the base model
+                # Merge and save in chunks to reduce memory usage
                 merged_model = model.merge_and_unload()
                 
-                # Save the merged model locally
+                # Save the merged model with aggressive memory optimization
                 merged_model.save_pretrained(
                     merged_model_dir,
                     safe_serialization=True,
-                    max_shard_size="5GB"
+                    max_shard_size="1GB",  # Reduced shard size
+                    save_function=torch.save
                 )
                 tokenizer.save_pretrained(merged_model_dir)
                 
                 merge_message = f"\nSuccessfully merged LoRA adapter with base model. Saved to: {merged_model_dir}"
+                
+                # Clear memory again
+                del model
+                del merged_model
+                if torch.cuda.is_available():
+                    torch.cuda.empty_cache()
+                    
             except Exception as e:
                 merge_message = f"\nWarning: Failed to merge the model: {str(e)}"
-                merged_model_dir = output_dir  # Fall back to the adapter model
+                merged_model_dir = output_dir  # Fall back to adapter model
         else:
             merge_message = ""
             merged_model_dir = output_dir
