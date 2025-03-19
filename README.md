@@ -7,7 +7,8 @@
 </p>
 
 # 🦥 Unsloth UI 🦥
-***[🦙 Ollama Discord Server 🦙](https://discord.gg/ollama)*** | ***[🤖 Borch's OARC Discord 🧙](https://discord.gg/dAzSYcnpdF)***
+***[🦥 Unsloth Discord Server 🦥](https://discord.gg/UHsmJ98rgt)*** | ***[🤖 Borch's OARC Discord 🧙](https://discord.gg/dAzSYcnpdF)***
+
 A modular and user-friendly interface for fine-tuning, exporting, and using Unsloth-powered language models.
 
 <p align="center">
