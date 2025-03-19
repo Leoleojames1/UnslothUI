@@ -6,8 +6,8 @@
   <img src="made with unsloth.png" alt="slothui LOGO" width="150"/>
 </p>
 
-# Unsloth UI
-
+# 🦥 Unsloth UI 🦥
+***[🦙 Ollama Discord Server 🦙](https://discord.gg/ollama)*** | ***[🤖 Borch's OARC Discord 🧙](https://discord.gg/dAzSYcnpdF)***
 A modular and user-friendly interface for fine-tuning, exporting, and using Unsloth-powered language models.
 
 <p align="center">
