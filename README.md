@@ -81,7 +81,7 @@ python run.py
 This will start the Gradio interface, accessible at http://localhost:7860 by default.
 
 <p align="center">
-  <img src="unslothGradio1.png" alt="slothui LOGO" width="500"/>
+  <img src="unslothGradio1.png" alt="slothui LOGO" width="850"/>
 </p>
 
 ## Fine-Tuning Workflow
