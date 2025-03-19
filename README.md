@@ -1,5 +1,14 @@
+
+<p align="center">
+  <img src="slothUI.png" alt="slothui LOGO" width="250"/>
+</p>
+
 <p align="center">
   <img src="unslothSticker.png" alt="slothui LOGO" width="250"/>
+</p>
+
+<p align="center">
+  <img src="slothUI.png" alt="slothui LOGO" width="250"/>
 </p>
 
 # Unsloth UI
