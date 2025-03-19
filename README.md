@@ -27,16 +27,31 @@ A modular and user-friendly interface for fine-tuning, exporting, and using Unsl
 
 1. Clone this repository:
    ```bash
-   git clone https://github.com/yourusername/unsloth-ui.git
-   cd unsloth-ui
+   git clone https://github.com/Leoleojames1/UnslothUI
+   cd UnslothUI
    ```
 
-2. Install the required packages:
+2. Install the required packages for unsloth reference [docs](https://docs.unsloth.ai/get-started/installing-+-updating/windows-installation):
    ```bash
-   pip install unsloth gradio transformers datasets huggingface_hub torch trl
+   conda create --name unsloth_env \
+    python=3.11 \
+    pytorch-cuda=12.1 \
+    pytorch cudatoolkit xformers -c pytorch -c nvidia -c xformers \
+    -y
    ```
 
-3. Install Ollama (optional, for Ollama integration):
+   ```bash
+   conda activate unsloth_env
+  
+   pip install unsloth
+   ```
+
+   ```bash
+
+   pip install gradio transformers datasets huggingface_hub
+   ```
+
+4. Install Ollama (optional, for Ollama integration):
    - Visit [ollama.com](https://ollama.com) for installation instructions
 
 ## Directory Structure
