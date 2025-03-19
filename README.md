@@ -3,7 +3,7 @@
   <img src="slothUI.png" alt="slothui LOGO" width="250"/>
 </p>
 <p align="center">
-  <img src="made with unsloth.png" alt="slothui LOGO" width="250"/>
+  <img src="made with unsloth.png" alt="slothui LOGO" width="150"/>
 </p>
 
 # Unsloth UI
