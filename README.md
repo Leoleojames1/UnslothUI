@@ -1,3 +1,11 @@
+<p align="center">
+  <img src="slothUI.png" alt="slothui LOGO" width="250"/>
+</p>
+<p align="center">
+  <a href="https://ko-fi.com/theborch"><img src="assets/buy me a coffee button.png" height="48"></a>
+  <a href="https://discord.gg/mNeQZzBHuW"><img src="assets/Discord button.png" height="48"></a>
+</p>
+
 # Unsloth UI
 
 A modular and user-friendly interface for fine-tuning, exporting, and using Unsloth-powered language models.
