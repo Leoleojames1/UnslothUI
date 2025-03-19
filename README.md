@@ -7,6 +7,10 @@
 
 A modular and user-friendly interface for fine-tuning, exporting, and using Unsloth-powered language models.
 
+<p align="center">
+  <img src="unslothGradio1.png" alt="slothui LOGO" width="850"/>
+</p>
+
 ## Features
 
 - **Fine-tune Models**: Train custom models with LoRA adapters on any dataset
@@ -79,10 +83,6 @@ python run.py
 ```
 
 This will start the Gradio interface, accessible at http://localhost:7860 by default.
-
-<p align="center">
-  <img src="unslothGradio1.png" alt="slothui LOGO" width="850"/>
-</p>
 
 ## Fine-Tuning Workflow
 
