@@ -7,7 +7,7 @@
 </p>
 
 # 🦥 Unsloth UI 🦥
-***[🦥 Unsloth Discord Server 🦥](https://discord.gg/UHsmJ98rgt)*** | ***[🤖 Borch's OARC Discord 🧙](https://discord.gg/dAzSYcnpdF)***
+***[🦥 Unsloth Github 🦥](https://github.com/unslothai/unsloth)*** | ***[🦥 Unsloth Discord Server 🦥](https://discord.gg/UHsmJ98rgt)*** | ***[🤖 Borch's OARC Discord 🧙](https://discord.gg/dAzSYcnpdF)***
 
 A modular and user-friendly interface for fine-tuning, exporting, and using Unsloth-powered language models.
 
